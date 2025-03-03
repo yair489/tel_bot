@@ -9,13 +9,12 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 TOKEN = "7861450739:AAHPeoXzDOoMVvPzGQ5U30C1BJ7d2elKHhg"
 
 
+@dataclass
 class Word:
-    def __init__(self , word , word_translate , wrong_trans , sent):
-        self.word = word
-        self.word_translate = word_translate
-        self.wrong_trans = wrong_trans
-        self.sent = sent
-
+    word_id: str
+    meaning: str
+    similar_words: list
+    sentence_with_word : str
 
 @dataclass
 class User:
@@ -33,7 +32,6 @@ class User:
 
 bot = telebot.TeleBot(TOKEN)
 
-user_data = {}
 
 def add_user_to_json(user: User):
     #  read users.json
@@ -45,7 +43,7 @@ def add_user_to_json(user: User):
 
     # check if exist
     for existing_user in users:
-        if existing_user["_id"] == user.id or existing_user["username"] == user.username:
+        if existing_user["_id"] == user.id:
             print("User already exists!")
             return
 
@@ -80,14 +78,28 @@ def get_user_byid(user_id):
         if exist_user["_id"] == user_id:
             return User(**exist_user)
     return None
+
 def edit_quiz_data():
     pass
 def add_learnd_words_to_user():
     pass
 def edit_learned_words_to_user():
     pass
-def get_learned_words_byid():
+def get_learned_words_byid(user_id):
     pass
+
+def get_new_words(user_id):
+    learn_word = []#set(get_learned_words_byid(user_id))
+    with open("word_heb_arabic.json.json", "r", encoding="utf-8") as file:
+        words = json.load(file)
+    for word in words:
+        if word not in learn_word:
+            return Word(**word)
+    return "No words found!"
+
+
+
+
 @bot.message_handler(commands=['start'])
 def start(message):
     user_id = message.chat.id
@@ -116,7 +128,9 @@ def start(message):
 
 @bot.callback_query_handler(func=lambda call: call.data == "learn")
 def learn_word(call):
-    bot.send_message(call.message.chat.id, "📖 Learning a new word...")
+    user_id = call.message.from_user.id
+    get_new_words(user_id)
+    bot.send_message(user_id , "📖 Learning a new word...")
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "game")
