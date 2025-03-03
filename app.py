@@ -69,6 +69,17 @@ def add_user_to_json(user: User):
 
     print("User added successfully!")
     pass
+def get_user_byid(user_id):
+    try:
+        with open("users.json" , "r") as file:
+            users = json.load(file)
+    except ModuleNotFoundError:
+        users = []
+
+    for exist_user in users:
+        if exist_user["_id"] == user_id:
+            return User(**exist_user)
+    return None
 def edit_quiz_data():
     pass
 def add_learnd_words_to_user():
