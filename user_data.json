@@ -1,0 +1,34 @@
+[
+    {
+        "_id": 5276061302,
+        "username": "sleman",
+        "first_name": "sleman",
+        "last_name": "awiwi",
+        "language_target":
+        "language_native": "Unknown",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
+    },
+    {
+        "_id": 5276061302,
+        "username": "123",
+        "language_target": "Unknown",
+        "language_native": "Unknown",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
+    },
+    {
+        "_id": 5276061302,
+        "username": "123",
+        "language_target": "Unknown",
+        "language_native": "Unknown",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
+    }
+]

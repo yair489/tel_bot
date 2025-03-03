@@ -82,10 +82,8 @@ def get_user_byid(user_id):
 def edit_quiz_data():
     pass
 def add_learnd_words_to_user():
-    #suliman
     pass
 def edit_learned_words_to_user():
-
     pass
 def get_learned_words_byid(user_id):
     users_data = get_user_byid(user_id)
