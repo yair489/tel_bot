@@ -89,7 +89,7 @@ def get_learned_words_byid(user_id):
     pass
 
 def get_new_words(user_id):
-    learn_word = []#set(get_learned_words_byid(user_id))
+    learn_word = set(get_learned_words_byid(user_id))
     with open("word_heb_arabic.json.json", "r", encoding="utf-8") as file:
         words = json.load(file)
     for word in words:
