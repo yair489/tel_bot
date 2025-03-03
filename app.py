@@ -1,9 +1,6 @@
 from dataclasses import dataclass, field
 import json
 from dataclasses import asdict
-from dataclasses import dataclass, field
-import telebot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 TOKEN = "7861450739:AAHPeoXzDOoMVvPzGQ5U30C1BJ7d2elKHhg"
@@ -11,14 +8,15 @@ TOKEN = "7861450739:AAHPeoXzDOoMVvPzGQ5U30C1BJ7d2elKHhg"
 
 @dataclass
 class Word:
-    word_id: str
-    meaning: str
-    similar_words: list
-    sentence_with_word : str
+    def __init__(self , word , word_translate , wrong_trans , sent):
+        self.word = word
+        self.word_translate = word_translate
+        self.wrong_trans = wrong_trans
+        self.sent = sent
 
 @dataclass
 class User:
-    id: int
+    _id: int
     username: str
     language_target: str = "arabic"
     language_native: str = "hebrew"
@@ -28,7 +26,8 @@ class User:
     learned_words: list = field(default_factory=list)
 
 
-
+import telebot
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -85,8 +84,12 @@ def add_learnd_words_to_user():
     pass
 def edit_learned_words_to_user():
     pass
-def g(user_id):
-    pass
+def get_learned_words_byid(user_id, users_data):
+    for user in users_data:
+        if isinstance(user, dict) and user.get('_id') == user_id:
+            learned_words = [word['word_id'] for word in user['learned_words']]
+            return learned_words
+    return None
 
 def get_new_words(user_id):
     learn_word = set(get_learned_words_byid(user_id))
