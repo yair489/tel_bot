@@ -63,90 +63,23 @@
         ]
     },
     {
+        "_id": 6565074007,
+        "username": "Unknown",
+        "language_target": "arabic",
+        "language_native": "hebrew",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
+    },
+    {
         "_id": 5276061302,
         "username": "Unknown",
         "language_target": "arabic",
         "language_native": "hebrew",
-        "score": 6,
-        "total_quiz": 7,
-        "total_words": 15,
-        "learned_words": [
-            {
-                "word_id": "بحر",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "ماء",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "ليل",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "كتاب",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "أرض",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "قلب",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "نهار",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "طعام",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "وردة",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "سلام",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "شمس",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "كلب",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "سماء",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "بيت",
-                "correct": false,
-                "date_time": "03.03.2025"
-            },
-            {
-                "word_id": "مطر",
-                "correct": false,
-                "date_time": "03.03.2025"
-            }
-        ],
-        "correct_answer": "מים"
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
     }
 ]

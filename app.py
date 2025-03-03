@@ -1,3 +1,31 @@
+from dataclasses import dataclass, field
+import json
+from dataclasses import asdict
+
+
+TOKEN = "7861450739:AAHPeoXzDOoMVvPzGQ5U30C1BJ7d2elKHhg"
+
+
+@dataclass
+class Word:
+    def __init__(self , word , word_translate , wrong_trans , sent):
+        self.word = word
+        self.word_translate = word_translate
+        self.wrong_trans = wrong_trans
+        self.sent = sent
+
+@dataclass
+class User:
+    _id: int
+    username: str
+    language_target: str = "arabic"
+    language_native: str = "hebrew"
+    score: int = 0
+    total_quiz: int = 0
+    total_words: int = 0
+    learned_words: list = field(default_factory=list)
+
+
 import telebot
 import random
 import json
@@ -7,44 +35,93 @@ from datetime import datetime
 TOKEN = "7861450739:AAHPeoXzDOoMVvPzGQ5U30C1BJ7d2elKHhg"
 bot = telebot.TeleBot(TOKEN)
 
-# Load word and user data
-WORDS_FILE = "word_heb_arabic.json"
-USERS_FILE = "users.json"
 
-with open(WORDS_FILE, "r", encoding="utf-8") as f:
-    WORDS = json.load(f)
+def add_user_to_json(user: User):
+    #  read users.json
+    try:
+        with open("users.json", "r") as file:
+            users = json.load(file)
+    except FileNotFoundError:
+        users = []  # if not find
 
-with open(USERS_FILE, "r", encoding="utf-8") as f:
-    USERS = json.load(f)
+    # check if exist
+    for existing_user in users:
+        if existing_user["_id"] == user.id:
+            print("User already exists!")
+            return
 
-def save_users():
-    """ Save users data to the file. """
-    with open(USERS_FILE, "w", encoding="utf-8") as f:
-        json.dump(USERS, f, indent=4, ensure_ascii=False)
-
-def get_user(user_id):
-    """ Retrieve or create user profile. """
-    for user in USERS:
-        if user["_id"] == user_id:
-            return user
-    new_user = {
-        "_id": user_id,
-        "username": "Unknown",
-        "language_target": "arabic",
-        "language_native": "hebrew",
-        "score": 0,
-        "total_quiz": 0,
-        "total_words": 0,
-        "learned_words": []
+    # if not exist
+    user_data = {
+        "_id": user.id,
+        "username": user.username,
+        "language_target": user.language_target,
+        "language_native": user.language_native,
+        "score": user.score,
+        "total_quiz": user.total_quiz,
+        "total_words": user.total_words,
+        "learned_words": user.learned_words
     }
-    USERS.append(new_user)
-    save_users()
-    return new_user
 
-@bot.message_handler(commands=["start"])
+    users.append(user_data)
+
+    # שמירה מחדש לקובץ users.json
+    with open("users.json", "w") as file:
+        json.dump(users, file, indent=4)
+
+    print("User added successfully!")
+    pass
+def get_user_byid(user_id):
+    try:
+        with open("users.json" , "r") as file:
+            users = json.load(file)
+    except ModuleNotFoundError:
+        users = []
+
+    for exist_user in users:
+        if exist_user["_id"] == user_id:
+            return User(**exist_user)
+    return None
+
+def edit_quiz_data():
+    pass
+def add_learnd_words_to_user():
+    pass
+def edit_learned_words_to_user():
+    pass
+def get_learned_words_byid(user_id, users_data):
+    for user in users_data:
+        if isinstance(user, dict) and user.get('_id') == user_id:
+            learned_words = [word['word_id'] for word in user['learned_words']]
+            return learned_words
+    return None
+
+def get_new_words(user_id):
+    learn_word = set(get_learned_words_byid(user_id))
+    with open("word_heb_arabic.json.json", "r", encoding="utf-8") as file:
+        words = json.load(file)
+    for word in words:
+        if word not in learn_word:
+            return Word(**word)
+    return "No words found!"
+
+
+
+
+@bot.message_handler(commands=['start'])
 def start(message):
-    """ Sends a welcome message with available commands. """
-    user = get_user(message.chat.id)
+    user_id = message.chat.id
+    username = message.chat.username or "Unknown"
+    first_name = message.chat.first_name or "Unknown"
+    last_name = message.chat.last_name or ""
+
+    '''save user in object and save him in json'''
+    user = User(id= user_id , username =username)
+    add_user_to_json(user)
+
+    user_info = (f"👤 User Info:\n"
+                 f"🆔 ID: {user_id}\n"
+                 f"👤 Username: {username}\n"
+                 f"📛 Name: {first_name} {last_name}\n")
 
     welcome_message = (
         "Hello! I’m your Language Learning Bot. 📚\n\n"
@@ -64,27 +141,9 @@ def start(message):
 
 @bot.callback_query_handler(func=lambda call: call.data == "learn")
 def learn_word(call):
-    """ Learn a new word and store it in the user's profile. """
-    user = get_user(call.message.chat.id)
-
-    learned_word_ids = {entry["word_id"] for entry in user["learned_words"]}
-    available_words = [word for word in WORDS if word["word_id"] not in learned_word_ids]
-
-    if not available_words:
-        bot.send_message(call.message.chat.id, "🎉 You've learned all available words!")
-        return
-
-    word_data = random.choice(available_words)
-    word_id = word_data["word_id"]
-
-    # Update user's learned words
-    user["learned_words"].append({
-        "word_id": word_id,
-        "correct": False,
-        "date_time": datetime.now().strftime("%d.%m.%Y")
-    })
-    user["total_words"] += 1
-    save_users()
+    user_id = call.message.from_user.id
+    get_new_words(user_id)
+    bot.send_message(user_id , "📖 Learning a new word...")
 
     response = f"📝 Word: {word_id}\n📖 Meaning: {word_data['meaning']}\n✍ Example: {word_data['sentence_with_word']}"
 
