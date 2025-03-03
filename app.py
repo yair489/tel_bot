@@ -1,4 +1,7 @@
 import random
+from dataclasses import dataclass, field
+from typing import List, Dict
+from datetime import datetime
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, CallbackContext
 
@@ -27,6 +30,18 @@ class Word:
         self.wrong_trans = wrong_trans
         self.sent = sent
 
+@dataclass
+class User:
+    _id: int
+    username: str
+    language_target: str
+    language_native: str
+    score: int
+    total_quiz: int
+    total_words: int
+    learned_words: list
+
+def add_user_to_json():
 async def start(update: Update, context: CallbackContext) -> None:
     """ Sends a welcome message with available commands. """
     welcome_message = (
