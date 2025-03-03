@@ -1,9 +1,8 @@
 from dataclasses import dataclass, field
 import json
+import random
+
 from dataclasses import asdict
-from dataclasses import dataclass, field
-import telebot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 TOKEN = "7861450739:AAHPeoXzDOoMVvPzGQ5U30C1BJ7d2elKHhg"
@@ -14,11 +13,11 @@ class Word:
     word_id: str
     meaning: str
     similar_words: list
-    sentence_with_word : str
+    sentence_with_word :str
 
 @dataclass
 class User:
-    id: int
+    _id: int
     username: str
     language_target: str = "arabic"
     language_native: str = "hebrew"
@@ -28,7 +27,8 @@ class User:
     learned_words: list = field(default_factory=list)
 
 
-
+import telebot
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -43,13 +43,13 @@ def add_user_to_json(user: User):
 
     # check if exist
     for existing_user in users:
-        if existing_user["_id"] == user.id:
+        if existing_user["_id"] == user._id:
             print("User already exists!")
             return
 
     # if not exist
     user_data = {
-        "_id": user.id,
+        "_id": user._id,
         "username": user.username,
         "language_target": user.language_target,
         "language_native": user.language_native,
@@ -82,18 +82,26 @@ def get_user_byid(user_id):
 def edit_quiz_data():
     pass
 def add_learnd_words_to_user():
+    #suliman
     pass
 def edit_learned_words_to_user():
+
     pass
-def g(user_id):
-    pass
+def get_learned_words_byid(user_id):
+    users_data = get_user_byid(user_id)
+    if not users_data:
+        return []
+    return (users_data.learned_words)
+
 
 def get_new_words(user_id):
     learn_word = set(get_learned_words_byid(user_id))
-    with open("word_heb_arabic.json.json", "r", encoding="utf-8") as file:
+    with open("word_heb_arabic.json", "r", encoding="utf-8") as file:
         words = json.load(file)
-    for word in words:
-        if word not in learn_word:
+    # for word in words:
+    while True:
+        word = random.choice(words)
+        if word["word_id"] not in learn_word:
             return Word(**word)
     return "No words found!"
 
@@ -108,7 +116,7 @@ def start(message):
     last_name = message.chat.last_name or ""
 
     '''save user in object and save him in json'''
-    user = User(id= user_id , username =username)
+    user = User(_id= user_id , username =username)
     add_user_to_json(user)
 
     user_info = (f"👤 User Info:\n"
@@ -128,9 +136,9 @@ def start(message):
 
 @bot.callback_query_handler(func=lambda call: call.data == "learn")
 def learn_word(call):
-    user_id = call.message.from_user.id
-    get_new_words(user_id)
-    bot.send_message(user_id , "📖 Learning a new word...")
+    user_id = call.message.chat.id
+    new_word = get_new_words(user_id)
+    bot.send_message(user_id , "📖 Learning a new word\n" + new_word.word_id + " translate :" + new_word.meaning)
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "game")
