@@ -1,7 +1,8 @@
 from dataclasses import dataclass, field
 import json
 from dataclasses import asdict
-
+import telebot
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 TOKEN = "7861450739:AAHPeoXzDOoMVvPzGQ5U30C1BJ7d2elKHhg"
 
@@ -24,24 +25,50 @@ class User:
     total_words: int
     learned_words: list
 
-
-import telebot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
-
 bot = telebot.TeleBot(TOKEN)
 
 user_data = {}
 
-def add_user_to_jso():
+
+def add_user_to_json():
     pass
+
 def edit_quiz_data():
     pass
-def add_learnd_words_to_user():
+
+def add_learned_words_to_user():
     pass
+
 def edit_learned_words_to_user():
     pass
-def get_learned_words_byid():
-    pass
+
+def get_user_byid(user_id):
+    try:
+        with open("users.json" , "r") as file:
+            users = json.load(file)
+    except ModuleNotFoundError:
+        users = []
+
+    for exist_user in users:
+        if exist_user["_id"] == user_id:
+            return User(**exist_user)
+    return None
+
+
+
+def get_learned_words_byid(user_id):
+    user = get_user_byid(user_id)
+    if not user:
+        return "User not found!"
+
+    learned_words = user.learned_words
+    if not learned_words:
+        return "No learned words yet."
+
+    return learned_words
+
+
+
 @bot.message_handler(commands=['start'])
 def start(message):
     user_id = message.chat.id
