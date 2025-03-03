@@ -70,7 +70,13 @@
         "score": 0,
         "total_quiz": 0,
         "total_words": 0,
-        "learned_words": []
+        "learned_words": [
+            {
+                "word_id": "de_cat",
+                "correct": true,
+                "date_time": "15.4.2023"
+            }
+        ]
     },
     {
         "_id": 5276061302,
@@ -80,6 +86,28 @@
         "score": 0,
         "total_quiz": 0,
         "total_words": 0,
-        "learned_words": []
+        "learned_words": [
+            {
+                "word_id": "de_cat",
+                "correct": true,
+                "date_time": "15.4.2023"
+            }
+        ]
+    },
+    {
+        "_id": 1005165332,
+        "username": "Unknown",
+        "language_target": "arabic",
+        "language_native": "hebrew",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": [
+            {
+                "word_id": "mendi",
+                "correct": true,
+                "date_time": "15.4.2023"
+            }
+        ]
     }
 ]
