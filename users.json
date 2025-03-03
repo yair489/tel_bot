@@ -1,65 +1,85 @@
 [
-  {
-    "_id": 12345678,
-    "username": "YairT",
-    "language_target": "French",
-    "language_native": "English",
-    "score": 5,
-    "total_quiz": 10,
-    "total_words": 20,
-    "learned_words": [
-      {
-        "word_id": "fr_apple",
-        "correct": false,
-        "date_time": "10.2.2023"
-      },
-      {
-        "word_id": "fr_banana",
-        "correct": false,
-        "date_time": "10.2.2023"
-      }
-    ]
-  },
-  {
-    "_id": 87654321,
-    "username": "NoaL",
-    "language_target": "Spanish",
-    "language_native": "Hebrew",
-    "score": 8,
-    "total_quiz": 15,
-    "total_words": 25,
-    "learned_words": [
-      {
-        "word_id": "es_house",
-        "correct": true,
-        "date_time": "12.3.2023"
-      },
-      {
-        "word_id": "es_car",
-        "correct": false,
-        "date_time": "12.3.2023"
-      }
-    ]
-  },
-  {
-    "_id": 11223344,
-    "username": "DavidK",
-    "language_target": "German",
-    "language_native": "Russian",
-    "score": 6,
-    "total_quiz": 12,
-    "total_words": 18,
-    "learned_words": [
-      {
-        "word_id": "de_cat",
-        "correct": true,
-        "date_time": "15.4.2023"
-      },
-      {
-        "word_id": "de_dog",
-        "correct": true,
-        "date_time": "15.4.2023"
-      }
-    ]
-  }
+    {
+        "_id": 12345678,
+        "username": "YairT",
+        "language_target": "French",
+        "language_native": "English",
+        "score": 5,
+        "total_quiz": 10,
+        "total_words": 20,
+        "learned_words": [
+            {
+                "word_id": "fr_apple",
+                "correct": false,
+                "date_time": "10.2.2023"
+            },
+            {
+                "word_id": "fr_banana",
+                "correct": false,
+                "date_time": "10.2.2023"
+            }
+        ]
+    },
+    {
+        "_id": 87654321,
+        "username": "NoaL",
+        "language_target": "Spanish",
+        "language_native": "Hebrew",
+        "score": 8,
+        "total_quiz": 15,
+        "total_words": 25,
+        "learned_words": [
+            {
+                "word_id": "es_house",
+                "correct": true,
+                "date_time": "12.3.2023"
+            },
+            {
+                "word_id": "es_car",
+                "correct": false,
+                "date_time": "12.3.2023"
+            }
+        ]
+    },
+    {
+        "_id": 11223344,
+        "username": "DavidK",
+        "language_target": "German",
+        "language_native": "Russian",
+        "score": 6,
+        "total_quiz": 12,
+        "total_words": 18,
+        "learned_words": [
+            {
+                "word_id": "de_cat",
+                "correct": true,
+                "date_time": "15.4.2023"
+            },
+            {
+                "word_id": "de_dog",
+                "correct": true,
+                "date_time": "15.4.2023"
+            }
+        ]
+    },
+    {
+        "_id": 6565074007,
+        "username": "Unknown",
+        "language_target": "arabic",
+        "language_native": "hebrew",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
+    },
+    {
+        "_id": 5276061302,
+        "username": "Unknown",
+        "language_target": "arabic",
+        "language_native": "hebrew",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
+    }
 ]

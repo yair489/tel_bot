@@ -85,7 +85,7 @@ def add_learnd_words_to_user():
     pass
 def edit_learned_words_to_user():
     pass
-def get_learned_words_byid(user_id):
+def g(user_id):
     pass
 
 def get_new_words(user_id):
