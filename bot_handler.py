@@ -6,6 +6,7 @@ from private.user_manager import UserManager
 from private.word_manager import WordManager
 from private.cls_word_user import User
 import random
+from gtts import gTTS
 
 TOKEN = "7739208491:AAEpzCxss5m2iPGgKgSVoZFSA1soTDjwido"
 
@@ -37,13 +38,41 @@ def start(message):
 
 @bot.message_handler(func=lambda msg: msg.text == "📖 Learn a Word")
 def learn_word(message):
+    user_id = message.chat.id
     new_word = word_manager.get_new_word(message.chat.id, user_manager)
+
     if new_word:
-        bot.send_message(message.chat.id, f"📖 New word:\n{new_word.word_id} translates to: {new_word.meaning}")
-        user_manager.add_or_update_learned_word(user_id=message.chat.id,word=new_word)
+        # button Inline
+        keyboard = InlineKeyboardMarkup()
+        button = InlineKeyboardButton(text="🔊 השמע את המילה", callback_data=f"say_{new_word.word_id}")
+        keyboard.add(button)
+
+        # שליחת הודעה עם הכפתור
+        bot.send_message(
+            message.chat.id,
+            f"📖 New word:\n{new_word.word_id} translates to: {new_word.meaning}",
+            reply_markup=keyboard
+        )
+
+        # שמירת המילה של המשתמש
+        user_manager.add_or_update_learned_word(user_id=user_id, word=new_word)
+        user_manager.increment_total_words(user_id)
     else:
         bot.send_message(message.chat.id, "No new words available.")
 
+
+# פונקציה שתשמע את המילה
+@bot.callback_query_handler(func=lambda call: call.data.startswith("say_"))
+def say_word(call):
+    word_to_say = call.data.split("_", 1)[1]  # חילוץ המילה מה-callback_data
+    tts = gTTS(text=word_to_say, lang='ar')  # המרה לטקסט מדובר lang='iw'
+    tts.save("word.mp3")
+
+    # שליחת קובץ האודיו למשתמש
+    with open("word.mp3", "rb") as audio:
+        bot.send_audio(call.message.chat.id, audio)
+
+    bot.answer_callback_query(call.id, "🔊 המילה הושמעה!")
 @bot.message_handler(func=lambda msg: msg.text == "🎮 Play a Game")
 def play_game(message):
     new_word = word_manager.get_new_word(message.chat.id, user_manager)
@@ -69,15 +98,10 @@ def check_answer(call):
     if chosen_answer == correct_answer:
         flag_if_correct_answer = True
         bot.send_message(call.message.chat.id, f"✅ Correct! 🎉\n {word_id} means: {correct_answer}")
-        today_date = datetime.today().strftime('%d.%m.%Y')
-        update_fields_date_time = {
-            "learned_words.$[].date_time": today_date  ,# עדכון ה-date_time לכל המילים
-            "score" : {"$inc": 1}
-        }
-        # self.user_manager.update_user(call.message.chat.id , update_fields=update_fields_date_time)
+        user_manager.increase_user_score(call.message.chat.id, 1)
     else:
         bot.send_message(call.message.chat.id, f"❌ Wrong! The correct answer for {word_id} is: {correct_answer}")
-
+    user_manager.increment_total_quiz(call.message.chat.id)
     update_fields_score = {
         "total_quiz": {"$inc": 1}  # -total_quiz 1
     }
@@ -85,9 +109,15 @@ def check_answer(call):
 
 @bot.message_handler(func=lambda msg: msg.text == "View Learned Words 📚")
 def view_words(message):
-    learned_words = user_manager.get_learned_words_list(message.chat.id)
-    words_text = "\n".join(learned_words) if learned_words else "You haven't learned any words yet."
-    bot.send_message(message.chat.id, f"📚 Learned Words:\n{words_text}")
+    user_id = message.from_user.id
+    learned_words = user_manager.get_learned_words_obj(user_id)
+    st = "📚 Learned Words:\n"
+    st += f"{'word_id':<10} {'translate':<10} {'correct'}\n"
+    st += "-" * 30 + "\n"
+
+    for word in learned_words:
+        st += f"{"/"+word.word_id:<10} {'->':<10} {word.correct}\n"
+    bot.send_message(message.chat.id, st)
 
 
 ##################################################
