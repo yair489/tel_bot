@@ -1,18 +1,27 @@
 from dataclasses import  field
+from datetime import datetime
+import bunnet
 import pydantic
+from bunnet import Document
 from typing import Optional
 #bunnet pyndantix
 
 
-class Word(pydantic.BaseModel):
+class Word(Document):
     word_id: str
     meaning: str
     similar_words: list
     sentence_with_word :str
 
 
-class User(pydantic.BaseModel):
-    id : int = pydantic.Field(serialization_alias="_id")
+class MyWords(pydantic.BaseModel):
+    word_id: str
+    correct : str
+    date_time : datetime
+
+
+class User(Document):
+    id: int = pydantic.Field(serialization_alias="_id")
     username: str
     full_name: str
     language_target: str = "arabic"
@@ -20,4 +29,5 @@ class User(pydantic.BaseModel):
     score: int = 0
     total_quiz: int = 0
     total_words: int = 0
-    learned_words: list = field(default_factory=list)
+    learned_words: list[MyWords] = []
+
