@@ -51,7 +51,7 @@ def add_user_to_json(user: User):
     pass
 def get_user_byid(user_id):
     try:
-        with open("users.json" , "r") as file:
+        with open("users.json", "r") as file:
             users = json.load(file)
     except ModuleNotFoundError:
         users = []
