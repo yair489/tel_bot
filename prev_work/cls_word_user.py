@@ -12,6 +12,7 @@ class Word:
 class User:
     _id: int
     username: str
+    full_name: str
     language_target: str = "arabic"
     language_native: str = "hebrew"
     score: int = 0

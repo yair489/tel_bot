@@ -63,22 +63,6 @@
         ]
     },
     {
-        "_id": 6565074007,
-        "username": "Unknown",
-        "language_target": "arabic",
-        "language_native": "hebrew",
-        "score": 0,
-        "total_quiz": 0,
-        "total_words": 0,
-        "learned_words": [
-            {
-                "word_id": "de_cat",
-                "correct": true,
-                "date_time": "15.4.2023"
-            }
-        ]
-    },
-    {
         "_id": 5276061302,
         "username": "Unknown",
         "language_target": "arabic",
@@ -109,5 +93,16 @@
                 "date_time": "15.4.2023"
             }
         ]
+    },
+    {
+        "_id": 6565074007,
+        "username": "Unknown",
+        "full_name": "Yt",
+        "language_target": "arabic",
+        "language_native": "hebrew",
+        "score": 0,
+        "total_quiz": 0,
+        "total_words": 0,
+        "learned_words": []
     }
 ]
