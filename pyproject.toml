@@ -4,6 +4,7 @@ version = "0.1.0"
 requires-python = "~=3.13.0"
 dependencies = [
     "pydantic>=2.10.6",
+    "pymongo>=4.11.2",
     "pytelegrambotapi>=4.26.0",
 ]
 
