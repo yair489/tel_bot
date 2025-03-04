@@ -1,0 +1,92 @@
+[
+  {
+    "word_id": "سلام",
+    "meaning": "שלום",
+    "similar_words": ["ברכה", "ביטחון", "הרמוניה"],
+    "sentence_with_word": "السلام هو مفتاح السعادة والسلام الداخلي."
+  },
+  {
+    "word_id": "كلب",
+    "meaning": "כלב",
+    "similar_words": ["זאב", "שועל", "חיה"],
+    "sentence_with_word": "الكلب وفي لصاحبه ويحميه دائمًا."
+  },
+  {
+    "word_id": "شمس",
+    "meaning": "שמש",
+    "similar_words": ["יום", "אור", "חום"],
+    "sentence_with_word": "الشمس تشرق كل صباح وتنير العالم."
+  },
+  {
+    "word_id": "مطر",
+    "meaning": "גשם",
+    "similar_words": ["טל", "שיטפון", "רסס"],
+    "sentence_with_word": "المطر يغسل الشوارع ويجعل الجو نقيًا."
+  },
+  {
+    "word_id": "بيت",
+    "meaning": "בית",
+    "similar_words": ["דירה", "משכן", "מגורים"],
+    "sentence_with_word": "البيت هو المكان الذي نشعر فيه بالأمان والراحة."
+  },
+  {
+    "word_id": "قلب",
+    "meaning": "לב",
+    "similar_words": ["נשמה", "רגש", "אהבה"],
+    "sentence_with_word": "القلب هو مصدر المشاعر والعواطف."
+  },
+  {
+    "word_id": "كتاب",
+    "meaning": "ספר",
+    "similar_words": ["כרך", "מגילה", "חוברת"],
+    "sentence_with_word": "الكتاب يحتوي على الكثير من المعرفة والمعلومات."
+  },
+  {
+    "word_id": "ماء",
+    "meaning": "מים",
+    "similar_words": ["נוזל", "משקה", "גשם"],
+    "sentence_with_word": "الماء ضروري للحياة ولا يمكن العيش بدونه."
+  },
+  {
+    "word_id": "سماء",
+    "meaning": "שמיים",
+    "similar_words": ["רקיע", "עננים", "אוויר"],
+    "sentence_with_word": "السماء زرقاء وصافية في يوم مشمس."
+  },
+  {
+    "word_id": "أرض",
+    "meaning": "אדמה",
+    "similar_words": ["קרקע", "שטח", "עפר"],
+    "sentence_with_word": "الأرض هي المكان الذي نعيش عليه."
+  },
+  {
+    "word_id": "وردة",
+    "meaning": "ורד",
+    "similar_words": ["פרח", "צמח", "לבלוב"],
+    "sentence_with_word": "الوردة حمراء وجميلة جدًا."
+  },
+  {
+    "word_id": "بحر",
+    "meaning": "ים",
+    "similar_words": ["אוקיינוס", "נהר", "מים"],
+    "sentence_with_word": "البحر هادئ اليوم والأمواج صغيرة."
+  },
+  {
+    "word_id": "ليل",
+    "meaning": "לילה",
+    "similar_words": ["ערב", "חושך", "שקיעה"],
+    "sentence_with_word": "الليل مليء بالنجوم اللامعة."
+  },
+  {
+    "word_id": "نهار",
+    "meaning": "יום",
+    "similar_words": ["אור", "שמש", "זריחה"],
+    "sentence_with_word": "النهار طويل في فصل الصيف."
+  },
+  {
+    "word_id": "طعام",
+    "meaning": "אוכל",
+    "similar_words": ["מזון", "מאכל", "תפריט"],
+    "sentence_with_word": "الطعام لذيذ ومفيد للصحة."
+  }
+]
