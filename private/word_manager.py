@@ -2,6 +2,7 @@ import random
 import logging
 from private.cls_word_user import Word
 from pymongo import MongoClient
+import bunnet
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -16,14 +17,15 @@ class WordManager:
         self.collection = self.db.get_collection(collection_name)
         self.db_name = collection_name
         logger.info(f"Connected to MongoDB database: {db_uri}, collection: {collection_name}")
+        bunnet.init_bunnet(self.db, document_models=[Word])
 
     def load_words(self):
         """
         Load all words from MongoDB collection.
         """
-        words = list(self.collection.find({}, {"_id": 0}))
-        logger.info(f"Loaded {len(words)} words from the database.")
-        return words
+        all_word = Word.find_all().run()
+        # print(all_word)
+        return all_word
 
     def get_new_word(self, user_id, user_manager):
         """
@@ -38,9 +40,9 @@ class WordManager:
 
         random.shuffle(words)
         for word in words:
-            if word["word_id"] not in learned_words:
-                logger.info(f"User {user_id} is learning a new word: {word['word_id']}")
-                return Word(**word)
+            if word.word_id not in learned_words:
+                logger.info(f"User {user_id} is learning a new word: {word.word_id}")
+                return word
 
         logger.info(f"User {user_id} has learned all available words.")
         return None
