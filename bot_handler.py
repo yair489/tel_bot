@@ -193,6 +193,13 @@ def view_words(message):
 
 
 ##################################################
+@bot.message_handler(func=lambda message: message.chat.type in ["group", "supergroup"])
+def block_group_messages(message):
+    """ חוסם הודעות בקבוצה שלא קשורות לפקודות הבוט """
+    try:
+        bot.delete_message(message.chat.id, message.message_id)
+    except Exception as e:
+        print(f"Failed to delete message: {e}")
 @bot.message_handler(commands=['game'])
 def group_game(message):
     chat_type = message.chat.type
@@ -205,10 +212,3 @@ def group_game(message):
     else:
         bot.send_message(user_id, "❌ This command is only available in groups!")
 
-@bot.message_handler(func=lambda message: message.chat.type in ["group", "supergroup"])
-def block_group_messages(message):
-    """ חוסם הודעות בקבוצה שלא קשורות לפקודות הבוט """
-    try:
-        bot.delete_message(message.chat.id, message.message_id)
-    except Exception as e:
-        print(f"Failed to delete message: {e}")
