@@ -61,20 +61,23 @@ def generate_words(known_lang, unknown_lang):
 
 def create_language_files():
     """ Create JSON word files for each language pair """
-    for known_lang, unknown_lang in permutations(LANGUAGES, 2):
-        print(f"📖 Generating words for {known_lang} → {unknown_lang}...")
-        words_data = generate_words(known_lang, unknown_lang)
+    print("func")
+    unknown_lang = "Arabic"
+    known_lang = "Hebrew"
+    # for known_lang, unknown_lang in permutations(LANGUAGES, 2):
+    print(f"📖 Generating words for {known_lang} → {unknown_lang}...")
+    words_data = generate_words(known_lang, unknown_lang)
 
-        if words_data:
-            filename = f"{OUTPUT_DIR}/{known_lang.upper()}_{unknown_lang.upper()}_WORDS.json"
-            with open(filename, "w", encoding="utf-8") as f:
-                json.dump(words_data, f, indent=4, ensure_ascii=False)
-            print(f"✅ File saved: {filename}")
-        else:
-            print(f"⚠️ Skipped {known_lang} → {unknown_lang} due to errors.")
+    if words_data:
+        filename = f"{OUTPUT_DIR}/{known_lang.upper()}_{unknown_lang.upper()}_WORDS.json"
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(words_data, f, indent=4, ensure_ascii=False)
+        print(f"✅ File saved: {filename}")
+    else:
+        print(f"⚠️ Skipped {known_lang} → {unknown_lang} due to errors.")
 
-        time.sleep(3)  # Add delay to avoid API rate limits
+        # time.sleep(3)  # Add delay to avoid API rate limits
 
-if __name__ == "main":
+if __name__ == "__main__":
     create_language_files()
     print("🎉 All files generated successfully!")

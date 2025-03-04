@@ -4,15 +4,19 @@ import telebot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 from private.user_manager import UserManager
 from private.word_manager import WordManager
-from private.cls_word_user import User
+from private.game_manger import GameManager
+from private.model import User, Group
 import random
 from gtts import gTTS
+from private.bot_secretes import TOKEN
 
-TOKEN = "7739208491:AAEpzCxss5m2iPGgKgSVoZFSA1soTDjwido"
+logger = logging.getLogger(__name__)
 
 bot = telebot.TeleBot(TOKEN)
 user_manager = UserManager()
 word_manager = WordManager()
+game_manager = GameManager()
+
 
 
 @bot.message_handler(commands=['start'])
@@ -31,10 +35,11 @@ def start(message):
         bot.send_message(user_id, "Welcome! Choose an option:", reply_markup=keyboard)
 
     elif chat_type in ["group", "supergroup"]:
+        logger.info("start group act")
         chat_id = message.chat.id  # שולף את ה-chat_id של הצ'אט
         user_id = message.from_user.id  # שולף את ה-user_id של המשתמש
 
-        bot.send_message(user_id, "👋 Hello group! To start a game, use /game")
+        bot.send_message(chat_id, "👋 Hello group! To start a game, use /game")
 
 @bot.message_handler(func=lambda msg: msg.text == "📖 Learn a Word")
 def learn_word(message):
@@ -121,22 +126,103 @@ def view_words(message):
 
 
 ##################################################
-@bot.message_handler(func=lambda message: message.chat.type in ["group", "supergroup"])
-def block_group_messages(message):
-    """ חוסם הודעות בקבוצה שלא קשורות לפקודות הבוט """
-    try:
-        bot.delete_message(message.chat.id, message.message_id)
-    except Exception as e:
-        print(f"Failed to delete message: {e}")
+# @bot.message_handler(func=lambda message: message.chat.type in ["group", "supergroup"])
+# def block_group_messages(message):
+#     """ חוסם הודעות בקבוצה שלא קשורות לפקודות הבוט """
+#     try:
+#         bot.delete_message(message.chat.id, message.message_id)
+#     except Exception as e:
+#         print(f"Failed to delete message: {e}")
+# @bot.message_handler(commands=['game'])
+# def group_game(message):
+#     logger.info("Group game func")
+#     chat_type = message.chat.type
+#     user_id = message.chat.id
+#
+#     if chat_type in ["group", "supergroup"]:
+#         bot.send_message(user_id, "🎮 Starting a group game!")
+#         # כאן אפשר להוסיף את הלוגיקה של המשחק בקבוצה
+#
+#     else:
+#         bot.send_message(user_id, "❌ This command is only available in groups!")
+
+
+import random
+import time
+from threading import Timer
+from telebot import types
+
+
+# פונקציה לבחירת שאלה רנדומלית
+def get_random_question():
+    logger.info("Getting random get_random_question")
+    words = word_manager.load_words()
+    random_word = random.choice(words)
+    game_manager.new_question(random_word.word_id,  random_word.meaning , random_word.similar_words)
+    logger.info(f"Random word {words=} , {random_word=}")
+
+    # random.shuffle(options)
+
+
+
+# הפונקציה לניהול המשחק בקבוצה
 @bot.message_handler(commands=['game'])
 def group_game(message):
+    logger.info("Group game func")
     chat_type = message.chat.type
-    user_id = message.chat.id
+    chat_id = message.chat.id
+    user_from = message.from_user.id
 
     if chat_type in ["group", "supergroup"]:
-        bot.send_message(user_id, "🎮 Starting a group game!")
-        # כאן אפשר להוסיף את הלוגיקה של המשחק בקבוצה
+
+        bot.send_message(chat_id, "🎮 Starting a group game!")
+        game_manager.add_group(chat_id)
+
+        for i in range(5):
+            show_question(chat_id)
+            time.sleep(5)
+
+
+        # game_manager.update_scores_failure(1005165332 , 1 ,2)
 
     else:
-        bot.send_message(user_id, "❌ This command is only available in groups!")
+        bot.send_message(chat_id, "❌ This command is only available in groups!")
+
+
+def show_question(chat_id):
+    # random ques
+    get_random_question()
+
+    logger.info(f"add to list in show_question on {logger.name}")
+
+    game_manager.options.append(game_manager.answer)  # הוספת התשובה הנכונה
+    options = game_manager.options[:]  # יצירת רשימה חדשה כדי שלא יהיה שינוי על הרשימה המקורית
+    random.shuffle(options)
+
+    print(game_manager.options)
+    random.shuffle(game_manager.options)
+
+    # שלח את השאלה עם אפשרויות
+    keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
+    for option in game_manager.options:
+        logger.info(f" {option=} keybord")
+        keyboard.add(option)
+
+    bot.send_message(chat_id,
+                     f"📝 Question: {game_manager.question} - ???\nChoose the correct translation:",
+                     reply_markup=keyboard)
+
+    # 60 second
+    Timer(5, handle_timeout).start()
+
+# הפונקציה לטיפול בזמן שאלה
+def handle_timeout():
+    pass
+
+@bot.message_handler(func=lambda msg: msg.text in game_manager.options)
+def handle_answer(message):
+    logger.info(message)
+    pass
+
+
 

@@ -4,7 +4,7 @@ from datetime import datetime
 import json
 import random
 from dataclasses import asdict
-from private.cls_word_user import User, Word, MyWords
+from private.model import User, Word, MyWords, Group
 import bunnet
 
 # Configure logging
@@ -16,7 +16,7 @@ class UserManager:
         self.db = self.client.get_database(db_name)
         self.collection = self.db.get_collection(collection_name)
         self.db_name = db_name
-        bunnet.init_bunnet(self.db , document_models=[User])
+        bunnet.init_bunnet(self.db , document_models=[User, Group, Word])
 
 
     def add_user(self, user : User):

@@ -1,6 +1,6 @@
 import random
 import logging
-from private.cls_word_user import Word
+from private.model import Word
 from pymongo import MongoClient
 import bunnet
 
@@ -11,13 +11,13 @@ logger = logging.getLogger(__name__)
 class WordManager:
     COLLECTION_NAME = "words_hebrew_arabic"
 
-    def __init__(self, db_uri="language_bot", collection_name=COLLECTION_NAME):
-        self.client = MongoClient()  # Connect to MongoDB
-        self.db = self.client.get_database(db_uri)
-        self.collection = self.db.get_collection(collection_name)
-        self.db_name = collection_name
-        logger.info(f"Connected to MongoDB database: {db_uri}, collection: {collection_name}")
-        bunnet.init_bunnet(self.db, document_models=[Word])
+    # def __init__(self, db_uri="language_bot", collection_name=COLLECTION_NAME):
+        # self.client = MongoClient()  # Connect to MongoDB
+        # self.db = self.client.get_database(db_uri)
+        # self.collection = self.db.get_collection(collection_name)
+        # self.db_name = collection_name
+        # logger.info(f"Connected to MongoDB database: {db_uri}, collection: {collection_name}")
+        # bunnet.init_bunnet(self.db, document_models=[Word])
 
     def load_words(self):
         """

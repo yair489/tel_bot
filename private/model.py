@@ -31,3 +31,16 @@ class User(Document):
     total_words: int = 0
     learned_words: list[MyWords] = []
 
+class GroupUser(pydantic.BaseModel):
+    full_name: str
+    username: int
+    score: int = 0
+    failure: int = 0
+
+class Group(Document):
+    id: int = pydantic.Field(serialization_alias="_id")
+    language_target: str = "arabic"
+    language_native: str = "hebrew"
+    scores: dict[int, GroupUser] = {}
+    # learned_words: list[MyWords] = []
+
