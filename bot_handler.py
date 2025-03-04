@@ -1,17 +1,19 @@
+import logging
 from datetime import datetime
-
 import telebot
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+import bot_secrets
 from private.user_manager import UserManager
 from private.word_manager import WordManager
 from private.cls_word_user import User
 import random
 
-TOKEN = "7739208491:AAEpzCxss5m2iPGgKgSVoZFSA1soTDjwido"
+
+logger = logging.getLogger(__name__)
 
 class BotHandler:
     def __init__(self):
-        self.bot = telebot.TeleBot(TOKEN)
+        self.bot = telebot.TeleBot(bot_secrets.TOKEN)
         self.user_manager = UserManager()
         self.word_manager = WordManager()
         self.register_handlers()
@@ -19,7 +21,7 @@ class BotHandler:
     def register_handlers(self):
         @self.bot.message_handler(commands=['start'])
         def start(message):
-
+            logger.info("start")
             user = User(id=message.chat.id, username=message.chat.username or "Unknown", full_name=message.chat.first_name or "Unknown")
             print(user)
             self.user_manager.add_user(user)
@@ -85,4 +87,6 @@ class BotHandler:
             self.bot.send_message(message.chat.id, f"📚 Learned Words:\n{words_text}")
 
     def run(self):
+        logger.info("* Bot starting")
         self.bot.polling(none_stop=True)
+        logger.info("* Goodbye")
