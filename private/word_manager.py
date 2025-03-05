@@ -46,4 +46,6 @@ class WordManager:
 
         logger.info(f"User {user_id} has learned all available words.")
         return None
+    def get_word(self , word):
+        return Word.find_one(Word.word_id == word).run()
 
