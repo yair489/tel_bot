@@ -1,0 +1,122 @@
+[
+    {
+        "word_id": "hello",
+        "meaning": "שלום (shalom)",
+        "similar_words": [
+            "היי (hi)",
+            "מה שלומך (ma shlomecha - how are you?)"
+        ],
+        "sentence_with_word": "Hello, how are you today?"
+    },
+    {
+        "word_id": "goodbye",
+        "meaning": "להתראות (lehitraot)",
+        "similar_words": [
+            "ביי (bye)",
+            "יאללה ביי (yalla bye - casual bye)"
+        ],
+        "sentence_with_word": "Goodbye, see you later."
+    },
+    {
+        "word_id": "please",
+        "meaning": "בבקשה (bevakasha)",
+        "similar_words": [],
+        "sentence_with_word": "Please pass the salt."
+    },
+    {
+        "word_id": "thank you",
+        "meaning": "תודה (toda)",
+        "similar_words": [
+            "תודה רבה (toda raba - thank you very much)"
+        ],
+        "sentence_with_word": "Thank you for your help."
+    },
+    {
+        "word_id": "yes",
+        "meaning": "כן (ken)",
+        "similar_words": [],
+        "sentence_with_word": "Yes, I understand."
+    },
+    {
+        "word_id": "no",
+        "meaning": "לא (lo)",
+        "similar_words": [],
+        "sentence_with_word": "No, I don't want any."
+    },
+    {
+        "word_id": "good",
+        "meaning": "טוב (tov)",
+        "similar_words": [
+            "יפה (yafe - nice/beautiful)",
+            "מצוין (metzuyan - excellent)"
+        ],
+        "sentence_with_word": "That's a good idea."
+    },
+    {
+        "word_id": "bad",
+        "meaning": "רע (ra)",
+        "similar_words": [
+            "גרוע (garu'a - terrible)",
+            "לא טוב (lo tov - not good)"
+        ],
+        "sentence_with_word": "That's a bad habit."
+    },
+    {
+        "word_id": "big",
+        "meaning": "גדול (gadol)",
+        "similar_words": [
+            "ענק (anak - huge)",
+            "כביר (kavir - massive)"
+        ],
+        "sentence_with_word": "That's a big house."
+    },
+    {
+        "word_id": "small",
+        "meaning": "קטן (katan)",
+        "similar_words": [
+            "זעיר (za'ir - tiny)"
+        ],
+        "sentence_with_word": "That's a small problem."
+    },
+    {
+        "word_id": "this",
+        "meaning": "זה (ze)",
+        "similar_words": [
+            "זאת (zot - feminine)",
+            "אלה (eleh - these)"
+        ],
+        "sentence_with_word": "This is my book."
+    },
+    {
+        "word_id": "that",
+        "meaning": "הוא (hu - masculine)",
+        "similar_words": [
+            "היא (hi - feminine)",
+            "הם (hem - masculine plural)",
+            "הן (hen - feminine plural)"
+        ],
+        "sentence_with_word": "That is your car."
+    },
+    {
+        "word_id": "water",
+        "meaning": "מים (mayim)",
+        "similar_words": [],
+        "sentence_with_word": "Can I have some water?"
+    },
+    {
+        "word_id": "house",
+        "meaning": "בית (bayit)",
+        "similar_words": [
+            "דירה (dira - apartment)"
+        ],
+        "sentence_with_word": "I'm going home to my house."
+    },
+    {
+        "word_id": "man",
+        "meaning": "איש (ish)",
+        "similar_words": [
+            "גבר (gever)"
+        ],
+        "sentence_with_word": "He is a good man."
+    }
+]

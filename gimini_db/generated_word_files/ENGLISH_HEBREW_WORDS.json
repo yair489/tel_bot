@@ -1,0 +1,152 @@
+[
+    {
+        "word_id": "שלום",
+        "meaning": "hello, peace",
+        "similar_words": [
+            "hi",
+            "greetings",
+            "hey"
+        ],
+        "sentence_with_word": "שלום, מה שלומך?"
+    },
+    {
+        "word_id": "ביי",
+        "meaning": "bye",
+        "similar_words": [
+            "goodbye",
+            "farewell",
+            "see you"
+        ],
+        "sentence_with_word": "ביי, נתראה מחר!"
+    },
+    {
+        "word_id": "כן",
+        "meaning": "yes",
+        "similar_words": [
+            "yeah",
+            "affirmative",
+            "okay"
+        ],
+        "sentence_with_word": "כן, אני רוצה לבוא."
+    },
+    {
+        "word_id": "לא",
+        "meaning": "no",
+        "similar_words": [
+            "nope",
+            "negative",
+            "nah"
+        ],
+        "sentence_with_word": "לא, תודה."
+    },
+    {
+        "word_id": "תודה",
+        "meaning": "thank you",
+        "similar_words": [
+            "thanks",
+            "grateful",
+            "appreciate"
+        ],
+        "sentence_with_word": "תודה רבה על העזרה."
+    },
+    {
+        "word_id": "בבקשה",
+        "meaning": "please, you're welcome",
+        "similar_words": [
+            "welcome",
+            "here you go",
+            "don't mention it"
+        ],
+        "sentence_with_word": "בבקשה, קח את זה."
+    },
+    {
+        "word_id": "אני",
+        "meaning": "I",
+        "similar_words": [
+            "me",
+            "myself",
+            "my"
+        ],
+        "sentence_with_word": "אני אוהב גלידה."
+    },
+    {
+        "word_id": "אתה",
+        "meaning": "you (masculine singular)",
+        "similar_words": [
+            "you",
+            "yourself",
+            "your"
+        ],
+        "sentence_with_word": "אתה סטודנט?"
+    },
+    {
+        "word_id": "את",
+        "meaning": "you (feminine singular)",
+        "similar_words": [
+            "you",
+            "yourself",
+            "your"
+        ],
+        "sentence_with_word": "את אוהבת קפה?"
+    },
+    {
+        "word_id": "הוא",
+        "meaning": "he",
+        "similar_words": [
+            "him",
+            "his",
+            "himself"
+        ],
+        "sentence_with_word": "הוא רופא."
+    },
+    {
+        "word_id": "היא",
+        "meaning": "she",
+        "similar_words": [
+            "her",
+            "hers",
+            "herself"
+        ],
+        "sentence_with_word": "היא מורה."
+    },
+    {
+        "word_id": "זה",
+        "meaning": "this, it (masculine singular)",
+        "similar_words": [
+            "this",
+            "it",
+            "that"
+        ],
+        "sentence_with_word": "זה ספר טוב."
+    },
+    {
+        "word_id": "זאת",
+        "meaning": "this, it (feminine singular)",
+        "similar_words": [
+            "this",
+            "it",
+            "that"
+        ],
+        "sentence_with_word": "זאת עוגה טעימה."
+    },
+    {
+        "word_id": "מה",
+        "meaning": "what",
+        "similar_words": [
+            "which",
+            "how",
+            "huh"
+        ],
+        "sentence_with_word": "מה שלומך?"
+    },
+    {
+        "word_id": "איפה",
+        "meaning": "where",
+        "similar_words": [
+            "where to",
+            "wherefrom",
+            "location"
+        ],
+        "sentence_with_word": "איפה אתה גר?"
+    }
+]

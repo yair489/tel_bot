@@ -1,0 +1,152 @@
+[
+    {
+        "word_id": "שלום",
+        "meaning": "سلام",
+        "similar_words": [
+            "أمان",
+            "وئام",
+            "طمأنينة"
+        ],
+        "sentence_with_word": "הוא אמר שלום לחבריו."
+    },
+    {
+        "word_id": "כן",
+        "meaning": "نعم",
+        "similar_words": [
+            "بلى",
+            "أجل",
+            "تمام"
+        ],
+        "sentence_with_word": "כן, אני רוצה ללכת."
+    },
+    {
+        "word_id": "לא",
+        "meaning": "لا",
+        "similar_words": [
+            "كلا",
+            "ليس",
+            "ما"
+        ],
+        "sentence_with_word": "לא, אני לא רעב."
+    },
+    {
+        "word_id": "תודה",
+        "meaning": "شكرًا",
+        "similar_words": [
+            "مع الشكر",
+            "متشكر",
+            "ممنونم"
+        ],
+        "sentence_with_word": "תודה רבה על העזרה."
+    },
+    {
+        "word_id": "בבקשה",
+        "meaning": "عفوًا",
+        "similar_words": [
+            "على الرحب والسعة",
+            "لا شكر على واجب",
+            "تفضل"
+        ],
+        "sentence_with_word": "בבקשה, קח את זה."
+    },
+    {
+        "word_id": "סליחה",
+        "meaning": "معذرةً",
+        "similar_words": [
+            "آسف",
+            "متأسف",
+            "العفو"
+        ],
+        "sentence_with_word": "סליחה, לא התכוונתי."
+    },
+    {
+        "word_id": "מה",
+        "meaning": "ماذا",
+        "similar_words": [
+            "ما",
+            "أي",
+            "كم"
+        ],
+        "sentence_with_word": "מה שלומך?"
+    },
+    {
+        "word_id": "מי",
+        "meaning": "من",
+        "similar_words": [
+            "أي",
+            "الذي",
+            "التي"
+        ],
+        "sentence_with_word": "מי אתה?"
+    },
+    {
+        "word_id": "איפה",
+        "meaning": "أين",
+        "similar_words": [
+            "في أي مكان",
+            "إلى أين",
+            "من أين"
+        ],
+        "sentence_with_word": "איפה אתה גר?"
+    },
+    {
+        "word_id": "מתי",
+        "meaning": "متى",
+        "similar_words": [
+            "في أي وقت",
+            "إلى متى",
+            "منذ متى"
+        ],
+        "sentence_with_word": "מתי אתה בא?"
+    },
+    {
+        "word_id": "איך",
+        "meaning": "كيف",
+        "similar_words": [
+            "بأي طريقة",
+            "بأي شكل",
+            "لماذا"
+        ],
+        "sentence_with_word": "איך קוראים לך?"
+    },
+    {
+        "word_id": "אחד",
+        "meaning": "واحد",
+        "similar_words": [
+            "أحد",
+            "فرد",
+            "وحدة"
+        ],
+        "sentence_with_word": "יש לי רק אחד."
+    },
+    {
+        "word_id": "שניים",
+        "meaning": "اثنان",
+        "similar_words": [
+            "اثنين",
+            "زوج",
+            "ثنائي"
+        ],
+        "sentence_with_word": "יש לי שניים."
+    },
+    {
+        "word_id": "גדול",
+        "meaning": "كبير",
+        "similar_words": [
+            "ضخم",
+            "هائل",
+            "عظيم"
+        ],
+        "sentence_with_word": "זה בית גדול."
+    },
+    {
+        "word_id": "קטן",
+        "meaning": "صغير",
+        "similar_words": [
+            "ضئيل",
+            "قليل",
+            "متواضع"
+        ],
+        "sentence_with_word": "זה חדר קטן."
+    }
+]

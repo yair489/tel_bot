@@ -1,0 +1,152 @@
+[
+    {
+        "word_id": "مرحبا",
+        "meaning": "Hello",
+        "similar_words": [
+            "Hi",
+            "Greetings",
+            "Good day"
+        ],
+        "sentence_with_word": "مرحبا، كيف حالك؟ (Hello, how are you?)"
+    },
+    {
+        "word_id": "مع السلامة",
+        "meaning": "Goodbye",
+        "similar_words": [
+            "Farewell",
+            "Bye",
+            "See you later"
+        ],
+        "sentence_with_word": "مع السلامة، أراك لاحقاً! (Goodbye, see you later!)"
+    },
+    {
+        "word_id": "نعم",
+        "meaning": "Yes",
+        "similar_words": [
+            "Yeah",
+            "Affirmative",
+            "Okay"
+        ],
+        "sentence_with_word": "نعم، أنا أفهم. (Yes, I understand.)"
+    },
+    {
+        "word_id": "لا",
+        "meaning": "No",
+        "similar_words": [
+            "Nope",
+            "Negative",
+            "Not at all"
+        ],
+        "sentence_with_word": "لا، شكراً. (No, thank you.)"
+    },
+    {
+        "word_id": "من فضلك",
+        "meaning": "Please",
+        "similar_words": [
+            "Kindly",
+            "If you please",
+            "Be so kind"
+        ],
+        "sentence_with_word": "من فضلك أعطني الماء. (Please give me water.)"
+    },
+    {
+        "word_id": "شكرا",
+        "meaning": "Thank you",
+        "similar_words": [
+            "Thanks",
+            "Gratitude",
+            "Appreciate it"
+        ],
+        "sentence_with_word": "شكراً جزيلاً لك. (Thank you very much.)"
+    },
+    {
+        "word_id": "أنا",
+        "meaning": "I",
+        "similar_words": [
+            "Me",
+            "Myself",
+            "My"
+        ],
+        "sentence_with_word": "أنا طالب. (I am a student.)"
+    },
+    {
+        "word_id": "أنتَ/أنتِ",
+        "meaning": "You",
+        "similar_words": [
+            "Yourself",
+            "Thou",
+            "Thee"
+        ],
+        "sentence_with_word": "أنتَ طالب مجتهد. (You are a hard-working student.)"
+    },
+    {
+        "word_id": "هو/هي",
+        "meaning": "He/She",
+        "similar_words": [
+            "Him/Her",
+            "His/Hers",
+            "Himself/Herself"
+        ],
+        "sentence_with_word": "هو طبيب. (He is a doctor.)"
+    },
+    {
+        "word_id": "نحن",
+        "meaning": "We",
+        "similar_words": [
+            "Us",
+            "Ourselves",
+            "Our"
+        ],
+        "sentence_with_word": "نحن أصدقاء. (We are friends.)"
+    },
+    {
+        "word_id": "أنتم/أنتن",
+        "meaning": "You (plural)",
+        "similar_words": [
+            "Yourselves",
+            "All of you",
+            "Y'all"
+        ],
+        "sentence_with_word": "أنتم طلاب جيدون. (You are good students.)"
+    },
+    {
+        "word_id": "هم/هن",
+        "meaning": "They",
+        "similar_words": [
+            "Them",
+            "Themselves",
+            "Their"
+        ],
+        "sentence_with_word": "هم أطباء. (They are doctors.)"
+    },
+    {
+        "word_id": "هذا/هذه",
+        "meaning": "This",
+        "similar_words": [
+            "These",
+            "That",
+            "Those"
+        ],
+        "sentence_with_word": "هذا كتاب. (This is a book.)"
+    },
+    {
+        "word_id": "ذاك/تلك",
+        "meaning": "That",
+        "similar_words": [
+            "Those",
+            "This",
+            "These"
+        ],
+        "sentence_with_word": "ذاك منزل. (That is a house.)"
+    },
+    {
+        "word_id": "ماذا",
+        "meaning": "What",
+        "similar_words": [
+            "Which",
+            "Who",
+            "How"
+        ],
+        "sentence_with_word": "ماذا تريد؟ (What do you want?)"
+    }
+]

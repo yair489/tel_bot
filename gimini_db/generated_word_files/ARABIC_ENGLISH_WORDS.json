@@ -1,0 +1,137 @@
+[
+    {
+        "word_id": "hello",
+        "meaning": "مرحباً",
+        "similar_words": [
+            "أهلاً",
+            "سلام"
+        ],
+        "sentence_with_word": "Hello, how are you?"
+    },
+    {
+        "word_id": "goodbye",
+        "meaning": "مع السلامة",
+        "similar_words": [
+            "إلى اللقاء",
+            "باي"
+        ],
+        "sentence_with_word": "Goodbye, see you later."
+    },
+    {
+        "word_id": "yes",
+        "meaning": "نعم",
+        "similar_words": [
+            "أجل",
+            "طبعاً"
+        ],
+        "sentence_with_word": "Yes, I understand."
+    },
+    {
+        "word_id": "no",
+        "meaning": "لا",
+        "similar_words": [
+            "كلا",
+            "ليس"
+        ],
+        "sentence_with_word": "No, thank you."
+    },
+    {
+        "word_id": "please",
+        "meaning": "من فضلك",
+        "similar_words": [
+            "لو سمحت",
+            "تفضل"
+        ],
+        "sentence_with_word": "Please pass the salt."
+    },
+    {
+        "word_id": "thank you",
+        "meaning": "شكراً",
+        "similar_words": [
+            "مع الشكر",
+            "متشكر"
+        ],
+        "sentence_with_word": "Thank you for your help."
+    },
+    {
+        "word_id": "you're welcome",
+        "meaning": "عفواً",
+        "similar_words": [
+            "على الرحب والسعة",
+            "لا شكر على واجب"
+        ],
+        "sentence_with_word": "You're welcome, anytime."
+    },
+    {
+        "word_id": "what",
+        "meaning": "ماذا",
+        "similar_words": [
+            "ما",
+            "أي"
+        ],
+        "sentence_with_word": "What is your name?"
+    },
+    {
+        "word_id": "who",
+        "meaning": "من",
+        "similar_words": [
+            "أي شخص",
+            "من هو"
+        ],
+        "sentence_with_word": "Who are you?"
+    },
+    {
+        "word_id": "where",
+        "meaning": "أين",
+        "similar_words": [
+            "في أي مكان",
+            "إلى أين"
+        ],
+        "sentence_with_word": "Where are you going?"
+    },
+    {
+        "word_id": "when",
+        "meaning": "متى",
+        "similar_words": [
+            "في أي وقت",
+            "أي وقت"
+        ],
+        "sentence_with_word": "When will you arrive?"
+    },
+    {
+        "word_id": "how",
+        "meaning": "كيف",
+        "similar_words": [
+            "بأي طريقة",
+            "بأي شكل"
+        ],
+        "sentence_with_word": "How are you doing?"
+    },
+    {
+        "word_id": "why",
+        "meaning": "لماذا",
+        "similar_words": [
+            "لما",
+            "لأي سبب"
+        ],
+        "sentence_with_word": "Why are you late?"
+    },
+    {
+        "word_id": "good",
+        "meaning": "جيد",
+        "similar_words": [
+            "ممتاز",
+            "حسن"
+        ],
+        "sentence_with_word": "That's a good idea."
+    },
+    {
+        "word_id": "bad",
+        "meaning": "سيء",
+        "similar_words": [
+            "رديء",
+            "غير جيد"
+        ],
+        "sentence_with_word": "This is a bad situation."
+    }
+]
