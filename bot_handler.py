@@ -30,9 +30,9 @@ def start(message):
 
         keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
         keyboard.row(KeyboardButton("📖 Learn a Word"), KeyboardButton("🎮 Play a Game"))
-        keyboard.row(KeyboardButton("View Learned Words 📚"), KeyboardButton("not work yet"))
+        keyboard.row(KeyboardButton("View Learned Words 📚"))
 
-        bot.send_message(user_id, "Welcome! Choose an option:", reply_markup=keyboard)
+        bot.send_message(user_id, "Welcome! Choose an option: \n https://t.me/+pW9RQz3MHRI2MTk0", reply_markup=keyboard)
 
     elif chat_type in ["group", "supergroup"]:
         logger.info("start group act")
@@ -49,13 +49,13 @@ def learn_word(message):
     if new_word:
         # button Inline
         keyboard = InlineKeyboardMarkup()
-        button = InlineKeyboardButton(text="🔊 השמע את המילה", callback_data=f"say_{new_word.word_id}")
+        button = InlineKeyboardButton(text="🔊 Hear the word.", callback_data=f"say_{new_word.word_id}")
         keyboard.add(button)
 
         # שליחת הודעה עם הכפתור
         bot.send_message(
             message.chat.id,
-            f"📖 New word:\n{new_word.word_id} translates to: {new_word.meaning}",
+            f"📖 New word:\n{new_word.word_id} translates to: {new_word.meaning} \n\n sentence with word: \n{new_word.sentence_with_word}",
             reply_markup=keyboard
         )
 
@@ -122,7 +122,7 @@ def view_words(message):
     user_id = message.from_user.id
     learned_words = user_manager.get_learned_words_obj(user_id)
     st = "📚 Learned Words:\n"
-    st += f"{'word_id':<10} {'translate':<10} {'correct'}\n"
+    # st += f"{'word_id':<10} {'translate':<10} {'correct'}\n"
     st += "-" * 30 + "\n"
 
     for word in learned_words:
@@ -186,9 +186,9 @@ def group_game(message):
 
         bot.send_message(chat_id, "🎮 Starting a group game!")
         game_manager.add_group(chat_id)
-
-        for i in range(2):
-            show_question(chat_id)
+        question_generator = game_manager.py_ques()  # create obj generator
+        for i in range(5):
+            show_question(chat_id , question_generator)
             time.sleep(5)
 
 
@@ -200,21 +200,22 @@ def group_game(message):
         bot.send_message(chat_id, "❌ This command is only available in groups!")
 
 
-def show_question(chat_id):
+def show_question(chat_id , question_generator):
     # random ques
-    get_random_question()
-
-    logger.info(f"add to list in show_question on {logger.name}")
-
-    game_manager.options.append(game_manager.answer)  # הוספת התשובה הנכונה
-    options = game_manager.options[:]  # יצירת רשימה חדשה כדי שלא יהיה שינוי על הרשימה המקורית
-    random.shuffle(options)
-
-    print(game_manager.options)
+    # get_random_question()
+    #
+    # logger.info(f"add to list in show_question on {logger.name}")
+    #
+    # game_manager.options.append(game_manager.answer)  # הוספת התשובה הנכונה
+    # options = game_manager.options[:]  # יצירת רשימה חדשה כדי שלא יהיה שינוי על הרשימה המקורית
+    # random.shuffle(options)
+    #
+    # print(game_manager.options)
 
     # get py ques
-    # q, answer, options = game_manager.py_ques()
-    # game_manager.new_question(q, answer, options)
+    # question_generator = game_manager.py_ques()  # create obj generator
+    q, answer, options = next(question_generator)
+    game_manager.new_question(q, answer, options)
     ########################
     random.shuffle(game_manager.options)
 
