@@ -80,7 +80,15 @@ def say_word(call):
     bot.answer_callback_query(call.id, "🔊 המילה הושמעה!")
 @bot.message_handler(func=lambda msg: msg.text == "🎮 Play a Game")
 def play_game(message):
-    new_word = word_manager.get_new_word(message.chat.id, user_manager)
+    user_words = user_manager.get_learned_words_list(message.chat.id)
+    if not user_words:
+        bot.send_message(message.chat.id, f"You haven't learned anything yet, brother.")
+        return
+    user_word_random = random.choice(user_words)
+    print(user_word_random)
+    new_word = word_manager.get_word(user_word_random)
+    print(new_word)
+
     if not new_word:
         bot.send_message(message.chat.id, "No new words available.")
         return
@@ -107,10 +115,7 @@ def check_answer(call):
     else:
         bot.send_message(call.message.chat.id, f"❌ Wrong! The correct answer for {word_id} is: {correct_answer}")
     user_manager.increment_total_quiz(call.message.chat.id)
-    update_fields_score = {
-        "total_quiz": {"$inc": 1}  # -total_quiz 1
-    }
-    # self.user_manager.update_user(call.message.chat.id , update_fields=update_fields_score)
+
 
 @bot.message_handler(func=lambda msg: msg.text == "View Learned Words 📚")
 def view_words(message):
@@ -161,6 +166,10 @@ def get_random_question():
     game_manager.new_question(random_word.word_id,  random_word.meaning , random_word.similar_words)
     logger.info(f"Random word {words=} , {random_word=}")
 
+def get_py_answer():
+     q, answer, opption = game_manager.py_ques()
+     game_manager.new_question(q, answer, opption)
+     logger.info(f"get_py_answer")
     # random.shuffle(options)
 
 
@@ -178,12 +187,14 @@ def group_game(message):
         bot.send_message(chat_id, "🎮 Starting a group game!")
         game_manager.add_group(chat_id)
 
-        for i in range(5):
+        for i in range(2):
             show_question(chat_id)
             time.sleep(5)
 
 
-        # game_manager.update_scores_failure(1005165332 , 1 ,2)
+        for username, img_buffer in game_manager.generate_score_charts(game_manager.get_scores()):
+            img_buffer.seek(0)  # לוודא שהתמונה מתחילה מההתחלה
+            bot.send_photo(username, img_buffer, caption=f"📊 Stats for {username}")
 
     else:
         bot.send_message(chat_id, "❌ This command is only available in groups!")
@@ -200,15 +211,20 @@ def show_question(chat_id):
     random.shuffle(options)
 
     print(game_manager.options)
+
+    # get py ques
+    # q, answer, options = game_manager.py_ques()
+    # game_manager.new_question(q, answer, options)
+    ########################
     random.shuffle(game_manager.options)
 
     # שלח את השאלה עם אפשרויות
     keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
     for option in game_manager.options:
-        logger.info(f" {option=} keybord")
+        # logger.info(f" {option=} keybord")
         keyboard.add(option)
 
-    bot.send_message(chat_id,
+    msg = bot.send_message(chat_id,
                      f"📝 Question: {game_manager.question} - ???\nChoose the correct translation:",
                      reply_markup=keyboard)
 
@@ -219,10 +235,22 @@ def show_question(chat_id):
 def handle_timeout():
     pass
 
+
 @bot.message_handler(func=lambda msg: msg.text in game_manager.options)
 def handle_answer(message):
-    logger.info(message)
-    pass
+    logger.info(f"get message from {message.from_user} - {message.text} ")
 
+    corr, ans_user = game_manager.answer, message.text
+    game_manager.update_scores_failure(message.from_user.id, corr, ans_user)
+
+    # שליחת תשובה פרטית למשתמש
+    bot.send_message(message.from_user.id,
+                     f"You {'✅ Correct!' if corr == ans_user else '❌ Wrong!'} , the answer is: {corr}")
+
+    # מחיקת ההודעה של המשתמש אחרי התגובה
+    try:
+        bot.delete_message(message.chat.id, message.message_id)
+    except Exception as e:
+        logger.error(f"Failed to delete message: {e}")
 
 
