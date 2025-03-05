@@ -27,7 +27,7 @@ Language Bot is a Telegram bot designed to help users learn Arabic in an interac
 ✅ Future Plans – We plan to support more languages and allow users to choose their native and target languages.
 
 Try the Bot Now!
-👉[Try the Bot Now!](t.me/@Language_boost_bot)
+👉[Try the Bot Now!]((http://t.me/Language_boost_bot))
 
 📸 Screenshots / Demo
 🚧 [VIDEO](https://github.com/user-attachments/assets/a95aba67-5626-4956-89b5-671db5ca7d8f)
