@@ -34,10 +34,15 @@ Try the Bot Now!
 
 
 📢 Instructions for Developers
+
 Prerequisites
+
 uv (Manages Python & dependencies)
+
 MongoDB (for storing user progress & learned words)
+
 🚀 Setup
+
 1️⃣ Clone this repository
 git clone  https://github.com/GrunitechStudents/bot-hackathon-language_team_suleiman_mendy_yair.git
 
@@ -57,7 +62,9 @@ Run the bot with uv (This will install Python 3.13 and dependencies automaticall
 uv run bot.py
 
 📌 Additional Notes
+
 💡 Learning System: The bot fetches words using Gemini AI and stores user progress in MongoDB.
+
 💡 Data Storage:
 Words database: word_heb_arabic.json (or MongoDB)
 
