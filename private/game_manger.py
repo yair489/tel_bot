@@ -59,12 +59,14 @@ class GameManager:
             f"Scores and failures updated for {username}. New score: {user.score}, New failure: {user.failure}.")
     # def create_plt(self):
     #     print(self.my_group.scores)
+
     def get_scores(self):
         return self.my_group.scores
+
     def generate_score_charts(self , scores):
         for user_id, user in scores.items():
             plt.figure(figsize=(5, 3))
-            plt.bar(["Score", "Failure"], [user.score, user.failure], color=["green", "red"])
+            plt.bar(["Score", "Failure"], [user.score, 5-user.score], color=["green", "red"])
             plt.xlabel("Category")
             plt.ylabel("Count")
             plt.title(f"User: {user.username}")
@@ -133,7 +135,7 @@ class GameManager:
         for question in questions:
             q = question[0]
             answer = question[1]
-            options = [question[1] ,  question[2] , question[3] , question[4] ]
+            options = [question[1],  question[2], question[3], question[4]]
             yield q, answer, options
 
 
