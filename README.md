@@ -1,5 +1,8 @@
 🌍 Language Bot
-<img width="435" alt="image" src="https://github.com/user-attachments/assets/93deeb8e-d9dd-4044-b97b-0ed4efb5da11" />
+
+
+<img width="485" alt="image" src="https://github.com/user-attachments/assets/417b10ef-c13c-467c-a988-39082cf24489" />
+
 
 
 
