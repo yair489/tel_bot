@@ -12,8 +12,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 # ✅ List of the top 10 most spoken languages
 LANGUAGES = [
-    "English", "Spanish", "Chinese", "Hindi", "Arabic",
-    "French", "Bengali", "Russian", "Portuguese", "German"
+    "English","Arabic","Hebrew"
 ]
 
 # ✅ Ensure output directory exists
