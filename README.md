@@ -1,5 +1,6 @@
 🌍 Language Bot
-![Uploading image.png…]()
+<img width="435" alt="image" src="https://github.com/user-attachments/assets/93deeb8e-d9dd-4044-b97b-0ed4efb5da11" />
+
 
 
 The Team
