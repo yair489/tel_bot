@@ -1,18 +1,26 @@
 🌍 Language Bot
 The Team
 🏆 [Suleiman Awiwi](https://github.com/slemanaweiwi) 
+
 🏆 [Yair Turgeman](https://github.com/yair489)
+
 🏆 [Mendy Segal](https://github.com/Mendysegal20)
+
 About this Bot
 
 Language Bot is a Telegram bot designed to help users learn Arabic in an interactive way! 🚀
 
 ✨ Features
 ✅ Learn Arabic Words – Get a new word with its meaning, similar words, and an example sentence.
+
 ✅ Take Quizzes – Test your knowledge by taking quizzes based on words you've learned.
+
 ✅ Show Learned Words – View all words you've learned so far.
+
 ✅ Hear the Word – Click a button to listen to the correct pronunciation. 🎧
+
 ✅ Join a Group Chat & Play Together – At the start of the game, users can join a group chat to learn new words together and play fun language-learning challenges! 🎮👥
+
 ✅ Future Plans – We plan to support more languages and allow users to choose their native and target languages.
 
 Try the Bot Now!
