@@ -1,4 +1,4 @@
-<img width="485" alt="image" src="https://github.com/user-attachments/assets/95cfeb49-ac95-405c-a2aa-43aedc659db4" />🌍 Language Bot
+🌍 Language Bot
 
 
 <img width="485" alt="image" src="https://github.com/user-attachments/assets/417b10ef-c13c-467c-a988-39082cf24489" />
@@ -83,4 +83,4 @@ User progress: Stored in MongoDB for persistent tracking.
 
 ## canva prestions
 
-[link to canva](https://www.canva.com/design/DAGg2Bdh6qQ/D8MFZKhL0M4kLGPlakLipg/edit?utm_content=DAGg2Bdh6qQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+[link to canva](https://www.canva.com/design/DAGg2Bdh6qQ/tlZ-gjuJzDkxueFlHRxHIA/view?utm_content=DAGg2Bdh6qQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h65c86d3b02)
