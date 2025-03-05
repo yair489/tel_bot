@@ -1,4 +1,4 @@
-🌍 Language Bot
+<img width="485" alt="image" src="https://github.com/user-attachments/assets/95cfeb49-ac95-405c-a2aa-43aedc659db4" />🌍 Language Bot
 
 
 <img width="485" alt="image" src="https://github.com/user-attachments/assets/417b10ef-c13c-467c-a988-39082cf24489" />
@@ -72,9 +72,15 @@ uv run bot.py
 
 💡 Learning System: The bot fetches words using Gemini AI and stores user progress in MongoDB.
 
+
+
 💡 Data Storage:
 Words database: word_heb_arabic.json (or MongoDB)
 
 User progress: Stored in MongoDB for persistent tracking.
 
 💡 Scalability: Future versions will support multiple languages and allow users to pick both their native and target languages.
+
+## canva prestions
+
+[link to canva](https://www.canva.com/design/DAGg2Bdh6qQ/D8MFZKhL0M4kLGPlakLipg/edit?utm_content=DAGg2Bdh6qQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
