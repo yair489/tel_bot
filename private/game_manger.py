@@ -35,24 +35,24 @@ class GameManager:
             logger.error("Group not found.")
             return
 
-        # קביעת הניקוד והכשלון כערכים מספריים
+        # Determining the score and failure numerical values
         score = int(correct == ans)
         failure = int(correct != ans)
 
         print(f"Updating score for {username}: Correct={correct}, Answer={ans}, Score={score}, Failure={failure}")
 
-        # אם המשתמש לא קיים, ניצור אותו
+        # If the user does not exist, we will create it.
         if username not in self.my_group.scores:
             user = GroupUser(full_name="", username=username, score=score, failure=failure)
             self.my_group.scores[username] = user
             logger.info(f"User {username} added to the group with initial score and failure.")
         else:
-            # עדכון הניקוד וכמות הכשלונות
+            # Updating the score and number of failures
             user = self.my_group.scores[username]
             user.score += score
             user.failure += failure
 
-        # שמירת השינויים
+        # Saving changes
         self.my_group.save()
 
         logger.info(
@@ -71,7 +71,7 @@ class GameManager:
             plt.ylabel("Count")
             plt.title(f"User: {user.username}")
 
-            # שמירת התמונה לזיכרון במקום לקובץ
+            #Saving the image to memory instead of a file
             img_buffer = BytesIO()
             plt.savefig(img_buffer, format="png")
             img_buffer.seek(0)

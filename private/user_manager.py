@@ -32,8 +32,8 @@ class UserManager:
         :return: The result of the document update
         """
         # result = self.collection.update_one(
-        #     {"_id": user_id},  # חיפוש המשתמש לפי ה-_id
-        #     update_fields  # עדכון ה-total_quiz
+        #     {"_id": user_id},
+        #     update_fields
         # )
         result = self.collection.update_one(
             {"_id": user_id},  # Finds the user by _id
