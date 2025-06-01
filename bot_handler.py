@@ -36,8 +36,8 @@ def start(message):
 
     elif chat_type in ["group", "supergroup"]:
         logger.info("start group act")
-        chat_id = message.chat.id  # שולף את ה-chat_id של הצ'אט
-        user_id = message.from_user.id  # שולף את ה-user_id של המשתמש
+        chat_id = message.chat.id  # -chat_id
+        user_id = message.from_user.id  #-user_id
 
         bot.send_message(chat_id, "👋 Hello group! To start a game, use /game")
 
@@ -52,28 +52,28 @@ def learn_word(message):
         button = InlineKeyboardButton(text="🔊 Hear the word.", callback_data=f"say_{new_word.word_id}")
         keyboard.add(button)
 
-        # שליחת הודעה עם הכפתור
+        # send message with botuuon
         bot.send_message(
             message.chat.id,
             f"📖 New word:\n{new_word.word_id} translates to: {new_word.meaning} \n\n sentence with word: \n{new_word.sentence_with_word}",
             reply_markup=keyboard
         )
 
-        # שמירת המילה של המשתמש
+        # save the word user
         user_manager.add_or_update_learned_word(user_id=user_id, word=new_word)
         user_manager.increment_total_words(user_id)
     else:
         bot.send_message(message.chat.id, "No new words available.")
 
 
-# פונקציה שתשמע את המילה
+# say the word function
 @bot.callback_query_handler(func=lambda call: call.data.startswith("say_"))
 def say_word(call):
     word_to_say = call.data.split("_", 1)[1]  # חילוץ המילה מה-callback_data
     tts = gTTS(text=word_to_say, lang='ar')  # המרה לטקסט מדובר lang='iw'
     tts.save("word.mp3")
 
-    # שליחת קובץ האודיו למשתמש
+    # send aduio to user
     with open("word.mp3", "rb") as audio:
         bot.send_audio(call.message.chat.id, audio)
 
@@ -133,7 +133,7 @@ def view_words(message):
 ##################################################
 # @bot.message_handler(func=lambda message: message.chat.type in ["group", "supergroup"])
 # def block_group_messages(message):
-#     """ חוסם הודעות בקבוצה שלא קשורות לפקודות הבוט """
+#
 #     try:
 #         bot.delete_message(message.chat.id, message.message_id)
 #     except Exception as e:
@@ -146,7 +146,7 @@ def view_words(message):
 #
 #     if chat_type in ["group", "supergroup"]:
 #         bot.send_message(user_id, "🎮 Starting a group game!")
-#         # כאן אפשר להוסיף את הלוגיקה של המשחק בקבוצה
+#
 #
 #     else:
 #         bot.send_message(user_id, "❌ This command is only available in groups!")
@@ -158,7 +158,6 @@ from threading import Timer
 from telebot import types
 
 
-# פונקציה לבחירת שאלה רנדומלית
 def get_random_question():
     logger.info("Getting random get_random_question")
     words = word_manager.load_words()
@@ -174,7 +173,7 @@ def get_py_answer():
 
 
 
-# הפונקציה לניהול המשחק בקבוצה
+# manage the game
 @bot.message_handler(commands=['game'])
 def group_game(message):
     logger.info("Group game func")
@@ -193,7 +192,7 @@ def group_game(message):
 
 
         for username, img_buffer in game_manager.generate_score_charts(game_manager.get_scores()):
-            img_buffer.seek(0)  # לוודא שהתמונה מתחילה מההתחלה
+            img_buffer.seek(0)
             bot.send_photo(username, img_buffer, caption=f"📊 Stats for {username}")
 
     else:
@@ -206,8 +205,8 @@ def show_question(chat_id , question_generator):
     #
     # logger.info(f"add to list in show_question on {logger.name}")
     #
-    # game_manager.options.append(game_manager.answer)  # הוספת התשובה הנכונה
-    # options = game_manager.options[:]  # יצירת רשימה חדשה כדי שלא יהיה שינוי על הרשימה המקורית
+    # game_manager.options.append(game_manager.answer)
+    # options = game_manager.options[:]
     # random.shuffle(options)
     #
     # print(game_manager.options)
@@ -219,7 +218,7 @@ def show_question(chat_id , question_generator):
     ########################
     random.shuffle(game_manager.options)
 
-    # שלח את השאלה עם אפשרויות
+    # send question with option
     keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
     for option in game_manager.options:
         # logger.info(f" {option=} keybord")
@@ -232,7 +231,6 @@ def show_question(chat_id , question_generator):
     # 60 second
     Timer(5, handle_timeout).start()
 
-# הפונקציה לטיפול בזמן שאלה
 def handle_timeout():
     pass
 
@@ -244,11 +242,11 @@ def handle_answer(message):
     corr, ans_user = game_manager.answer, message.text
     game_manager.update_scores_failure(message.from_user.id, corr, ans_user)
 
-    # שליחת תשובה פרטית למשתמש
+    # send private response to user
     bot.send_message(message.from_user.id,
                      f"You {'✅ Correct!' if corr == ans_user else '❌ Wrong!'} , the answer is: {corr}")
 
-    # מחיקת ההודעה של המשתמש אחרי התגובה
+    # delete message after the user write
     try:
         bot.delete_message(message.chat.id, message.message_id)
     except Exception as e:

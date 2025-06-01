@@ -44,7 +44,7 @@ def add_user_to_json(user: User):
 
     users.append(user_data)
 
-    # שמירה מחדש לקובץ users.json
+    # save agin  users.json
     with open("users.json", "w") as file:
         json.dump(users, file, indent=4)
 
@@ -193,12 +193,12 @@ def check_answer(call):
 
 
 @bot.message_handler(func=lambda message: message.text == "View Learned Words 📚")
-def view_words(message):  # שיניתי את השם ל-message כי זה לא callback
+def view_words(message):
     print("view_words")
-    user_id = message.chat.id  # תיקון: ניגש ישירות ל-chat.id
+    user_id = message.chat.id  #-chat.id
     bot.delete_message(user_id, message.message_id)
 
-    learned_words = get_learned_words_list(user_id)  # פונקציה להחזיר מילים שנלמדו
+    learned_words = get_learned_words_list(user_id)  # return words that i learnd
     words_text = "\n".join(learned_words) if learned_words else "You haven't learned any words yet."
 
     bot.send_message(user_id, f"📚 Learned Words:\n{words_text}")
